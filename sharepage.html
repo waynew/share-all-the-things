@@ -5,11 +5,34 @@
     <body>
     <label labelfor="url">URL:</label><input type="text" id="url" />
     <br /><button onclick="share_stuff();">Share!</button>
+    <div class='g-plus' data-action='share'>fnord</div>
     <div id="sharing"></div>
+    <script src="https://apis.google.com/js/plusone.js">
+        window.__gcfg = {
+            lang: 'en-US',
+            parsetags: 'explicit'
+        };
+    </script>
     <script>
         document.getElementById("url").focus();
         function share_stuff(){
-            window.open('https://m.google.com/app/plus/x/?v=compose&content=come+see+the+fnords%20http://www.google.com');
+            var div = document.createElement('div');
+            div.class = 'g-plus';
+            div.setAttribute('data-action', 'share');
+            div.setAttribute('data-annotation', 'bubble');
+            div.setAttribute('data-height', '24');
+            div.setAttribute('data-href', 'http://www.google.com');
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = 'https://apis.google.com/js/plusone.js';
+            script.innerHTML = '(function(){ alert("hi");})()';
+
+            var sharing = document.getElementById('sharing');
+            sharing.appendChild(script);
+            sharing.appendChild(div);
+            gapi.plus.go();
         }
     </script>
     <div id="share">
