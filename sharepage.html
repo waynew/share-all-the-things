@@ -4,19 +4,16 @@
     </head>
     <body>
     <label labelfor="url">URL:</label><input type="text" id="url" />
+    <br /><button onclick="share_stuff();">Share!</button>
+    <div id="sharing"></div>
     <script>
-        
+        document.getElementById("url").focus();
+        function share_stuff(){
+            window.open('https://m.google.com/app/plus/x/?v=compose&content=come+see+the+fnords%20http://www.google.com');
+        }
     </script>
-    <!-- Place this tag where you want the share button to render. -->
-    <div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href="http://waynewerner.com"></div>
+    <div id="share">
+    </div>
 
-    <!-- Place this tag after the last share tag. -->
-    <script type="text/javascript">
-      (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-      })();
-    </script>
     </body>
 </html>
